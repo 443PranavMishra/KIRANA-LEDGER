@@ -60,3 +60,8 @@ Solutions provided are:
 - **Pay dues online** — pay via your UPI app or upload a screenshot as proof.
 - **Request more credit** remotely, picking products from the shop's own catalog.
 - **Leave feedback** about the shop, a product, or staff.
+
+### Features Across the Whole App
+<mark>5 languages</mark> — English, Hindi, Marathi, Telugu, Tamil — switching is instant and affects every screen, including dynamically-loaded content.
+<mark>Spoken confirmations</mark> in the selected language for key actions — toggle-able, genuinely useful for lower-literacy users.
+WhatsApp help from our side for customers and shop owners, for any problem or conflict between them or with the website.
