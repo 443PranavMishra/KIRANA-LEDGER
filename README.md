@@ -110,7 +110,6 @@ WhatsApp help from our side for customers and shop owners, for any problem or co
 
 ---
 
-### Project Structure
 ## Project Structure
 
 ```
