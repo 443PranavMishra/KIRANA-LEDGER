@@ -1,3 +1,0 @@
-SUPABASE_URL='https://ohuitpchbbbcewscdqgy.supabase.co'
-SUPABASE_SERVICE_KEY='sb_secret_GSh8v-NC-mib77ybOYRxSA_ccUKhnrY'
-CONTACT_WHATSAPP_NUMBER=919555969879
