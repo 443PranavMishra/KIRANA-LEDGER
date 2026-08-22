@@ -117,9 +117,9 @@ WhatsApp help from our side for customers and shop owners, for any problem or co
 khata_project/
 ├── app.py                          Flask backend — all routes & logic
 ├── requirements.txt                Python dependencies
-├── .env.example                    Template for your own .env
+├── .env                            Paste All 5 keys Inside This File
 ├── models/
-│   └── README.md                   Optional face-model weights go here
+│   └── facenet_model               Optional face-model weights go here
 ├── database/
 │   ├── schema.sql                  Full database schema + migrations
 │   └── verify_schema.sql           Diagnostic: confirms what's deployed
@@ -138,3 +138,34 @@ khata_project/
 └── templates/
     └── index.html                  The app's single HTML entry point
 ```
+
+## Steps To Run The Project In Your System
+
+**Step 1:** Download all files and set up in the project structure inside any main folder (Khata Ledger).
+
+**Step 2:** Download the model from the given model link: `<add your model link here>`
+
+**Step 3:** Now open the main folder with VS Code.
+
+**Step 4:** Create `.env` in the root folder of the main folder, as shown in the project structure, in VS Code only.
+
+**Step 5:** Copy the given keys:
+a) `SUPABASE_URL`
+b) `SUPABASE_SERVICE_KEY`
+c) `FLASK_SECRET_KEY`
+d) `CONTACT_WHATSAPP_NUMBER`
+e) `FLASK_DEBUG`
+
+**Step 6:** After copying all 5 keys, paste them in the `.env` file and save the file in VS Code.
+
+**Step 7:** Open a new terminal in VS Code.
+
+**Step 8:** Run this code in the terminal: `pip install -r requirements.txt`
+
+**Step 9:** Then run: `python app.py`
+
+**Step 10:** After a few seconds, a link will be generated, like: `http://127.0.0.1:5000`
+
+**Step 11:** Copy and paste it in the browser.
+
+**Step 12:** Now the website is ready to use as a shop owner and customer.
