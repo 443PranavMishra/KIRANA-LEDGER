@@ -83,6 +83,7 @@ WhatsApp help from our side for customers and shop owners, for any problem or co
 
 **AI / Model Training**
 - Computer Vision
+- Vision Transformer
 - [MTCNN](https://github.com/timesler/facenet-pytorch)
 - [PyTorch](https://pytorch.org/)
 - [VGGFace2](https://ieeexplore.ieee.org/document/8373813)
