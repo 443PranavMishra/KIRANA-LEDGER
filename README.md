@@ -107,3 +107,28 @@ WhatsApp help from our side for customers and shop owners, for any problem or co
 3. **Describe** — `InceptionResnetV1` turns the face into 512 numbers that mathematically describe it.
 4. **Compare** — those numbers are matched against every stored face using cosine similarity.
 5. **Match or register** — a close-enough match means a recognized person; otherwise, it's treated as new and offered for registration.
+
+---
+
+### Project Structure
+khata_project/
+├── app.py                          Flask backend — all routes & logic
+├── requirements.txt                Python dependencies
+├── .env.example                    Template for your own .env
+├── models/
+│   └── README.md                   Optional face-model weights go here
+├── database/
+│   ├── schema.sql                  Full database schema + migrations
+│   └── verify_schema.sql           Diagnostic: confirms what's deployed
+├── static/
+│   ├── css/style.css
+│   ├── js/
+│   │   ├── i18n.js                 5-language system + in-app Help
+│   │   ├── auth.js                 Shop owner login / registration
+│   │   ├── customer-portal.js      Customer-facing features
+│   │   ├── contact.js              WhatsApp support integration
+│   │   ├── voice.js                Spoken confirmations
+│   │   └── app.js                  Core app: scanning, dashboard, etc.
+│   └── images/
+└── templates/
+    └── index.html                  The app's single HTML entry point
