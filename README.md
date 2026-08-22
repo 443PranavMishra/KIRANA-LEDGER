@@ -42,7 +42,7 @@ Solutions provided are:
 ## Every Feature, In Full
 
 ### For shop owners
-- **Face-scan login and registration** — no password needed day to day, only as a fallback.
+- **Face-scan login and registration** — no password needed day to day, only as a Face Scan.
 - **Multi-tenant by design** — every shop's data is completely isolated from every other shop.
 - **Scan a customer's face** to instantly pull up their account, or register them as new.
 - **Product catalog** — add items once, pick them quickly during every future purchase.
