@@ -171,3 +171,14 @@ khata_project/
 - Sometimes the scanner fails for a few seconds due to the high model size — if this occurs, kindly reload the website.
 - Sometimes customer scanning and the dashboard show NaN due to a weak server/database-side network.
 - These problems occur very rarely.
+
+---
+
+## Future Updates and Full Project Motto
+
+1. Adding a **real-time payment system** for customers to pay shop owner credit directly using payment gateways.
+2. Expanding to **up to 26 languages** to cover the maximum number of shops and business owners across India.
+3. An **AI agent** that customers and shop owners can directly talk to — to add products to inventory, enter details, and more.
+4. Making the relationship between customer and shop owner **more transparent and trustworthy**.
+5. A **chat box** where shop owners can directly message customers, and customers can directly contact a particular shop owner regarding any query.
+6. A **comparison listing of shops with a rating system**, so customers can visualize and choose the best products and most reliable credit shops.
