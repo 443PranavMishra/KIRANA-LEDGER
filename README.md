@@ -186,7 +186,7 @@ khata_project/
 
 ## Sources
 
-1) **Face Model Dataset Source**: [VGGFace2](https://www.robots.ox.ac.uk/~vgg/data/vgg_face2/) — Visual Geometry Group, University of Oxford (Cao, Shen, Xie, Parkhi, Zisserman, 2018). Accessed via `facenet-pytorch`'s pretrained `InceptionResnetV1` weights, not trained from scratch on this dataset ourselves.
+1) **Face Model Dataset Source**: [VGGFace2](https://www.robots.ox.ac.uk/~vgg/data/vgg_face2/) — Visual Geometry Group, University of Oxford (Cao, Shen, Xie, Parkhi, Zisserman, 2018). Accessed via `facenet-pytorch`'s pretrained `InceptionResnetV1`
 
 2) **API Sources**:
    - [Supabase](https://supabase.com/) — database, authentication, and file storage
