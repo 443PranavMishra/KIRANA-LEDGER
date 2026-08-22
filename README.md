@@ -65,3 +65,40 @@ Solutions provided are:
 <mark>5 languages</mark> — English, Hindi, Marathi, Telugu, Tamil — switching is instant and affects every screen, including dynamically-loaded content.
 <mark>Spoken confirmations</mark> in the selected language for key actions — toggle-able, genuinely useful for lower-literacy users.
 WhatsApp help from our side for customers and shop owners, for any problem or conflict between them or with the website.
+
+---
+
+Tech Stack
+
+Frontend
+
+HTML
+CSS
+JavaScript
+Web API
+Chart.js
+
+Backend
+
+Flask
+Gunicorn
+
+AI / Model Training
+
+Computer Vision
+MTCNN
+PyTorch
+VGGFace2
+InceptionResnetV1
+pgvector
+
+Database
+
+SQL
+Supabase Database
+
+Extra
+
+Google Colab — for model training
+WhatsApp API — for connection between user and us
+ChatGPT — for translation from Hindi/English to other languages and basic help
