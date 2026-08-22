@@ -19,3 +19,19 @@ Walk into almost any neighborhood kirana (grocery) store in India, and you'll fi
 - **Real risk of losing money** — tracking everyone by memory means some credit is often simply never collected.
 - **Language difference problem** — not every shop owner or customer is comfortable reading or writing in English.
 - **Inventory and credit get tangled together** — hard to remember which customer took which product, for how much, and when.
+
+
+## Theme Chosen: AI for Micro-Entrepreneurs and Street Vendors
+
+Our project targets small and micro-entrepreneurs, street vendors, and merchandisers who face the problem of maintaining cash flow between customers and their shop, solved by building an automatic AI system.
+
+## Why Us
+
+Solutions provided are:
+
+1) **No manual detail entering** — an image scanner model is integrated with the project which detects the customer and shop owner for all registration and login details.
+2) **Multi-language system** — 5 languages (English, Hindi, Marathi, Tamil, and Telugu) are integrated into the project, so any customer or shop owner can use the website in their native language.
+3) **Two sections for intercommunication between customer and shop owner**, where:
+   - a) The customer can see, ask for credit, and repay the credit to the shop owner directly from the website.
+   - b) The shop owner can visualize their customers' credit, view a dashboard for shop details, and even manage their inventory.
+4) **A highly secure shop owner account** to manage their shop's database.
