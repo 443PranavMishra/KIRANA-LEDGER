@@ -36,3 +36,28 @@ Solutions provided are:
    - a) The customer can see, ask for credit, and repay the credit to the shop owner directly from the website.
    - b) The shop owner can visualize their customers' credit, view a dashboard for shop details, and even manage their inventory.
 4) **A highly secure shop owner account** to manage their shop's database.
+
+---
+
+## Every Feature, In Full
+
+### For shop owners
+- **Face-scan login and registration** — no password needed day to day, only as a fallback.
+- **Multi-tenant by design** — every shop's data is completely isolated from every other shop.
+- **Scan a customer's face** to instantly pull up their account, or register them as new.
+- **Product catalog** — add items once, pick them quickly during every future purchase.
+- **Credit and payment recording** — add credit for a purchase, record a payment made in person.
+- **A real Dashboard, not a spreadsheet** — snapshot, 6-month growth graph, due-vs-clear breakdown, and a searchable dues table.
+- **Credit Requests** — customers request more credit remotely; the shop owner approves or rejects.
+- **Payment Claims** — customers submit a UPI screenshot as proof; the shop owner confirms only after seeing the money.
+- **Permanent, searchable Payment History** of every online payment.
+- **Customer Feedback** — see what customers say about the shop, a product, or staff.
+- **Payment Settings** — view or update your UPI ID, protected behind re-authentication.
+
+### For customers
+- **Face-scan lookup** — see dues across every shop at once, with a name-and-phone fallback.
+- **Full transaction history** per shop, searchable by date or amount.
+- **Pay dues online** — pay via your UPI app or upload a screenshot as proof.
+- **Request more credit** remotely, picking products from the shop's own catalog.
+- **Leave feedback** about the shop, a product, or staff.
+- **Contact support** directly on WhatsApp.
