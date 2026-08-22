@@ -8,6 +8,7 @@ economy, without asking anyone to read, type, or remember a password.**
 > Communities — AI for Public Good**
 
 MODEL LINK : https://www.kaggle.com/models/pranavmishra443/facenet-model
+KEYS PDF LINK : https://drive.google.com/file/d/1cPs9nbZJq8SuKytojBrMT4OKoNQ9EUQK/view?usp=drive_link
 ---
 
 ## The Problem
