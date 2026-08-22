@@ -55,7 +55,7 @@ Solutions provided are:
 - **Payment Settings** — view or update your UPI ID, protected behind re-authentication.
 
 ### For customers
-- **Face-scan lookup** — see dues across every shop at once, with a name-and-phone fallback.
+- **Face-scan lookup** — see dues across every shop at once either with face scan or with a name-and-phone fallback.
 - **Full transaction history** per shop, searchable by date or amount.
 - **Pay dues online** — pay via your UPI app or upload a screenshot as proof.
 - **Request more credit** remotely, picking products from the shop's own catalog.
