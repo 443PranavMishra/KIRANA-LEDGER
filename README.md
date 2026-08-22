@@ -68,37 +68,32 @@ WhatsApp help from our side for customers and shop owners, for any problem or co
 
 ---
 
-Tech Stack
+## Tech Stack
 
-Frontend
+**Frontend**
+- [HTML](https://developer.mozilla.org/en-US/docs/Web/HTML)
+- [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS)
+- [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
+- [Web Speech API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Speech_API)
+- [Chart.js](https://www.chartjs.org/)
 
-HTML
-CSS
-JavaScript
-Web API
-Chart.js
+**Backend**
+- [Flask](https://flask.palletsprojects.com/)
+- [Gunicorn](https://gunicorn.org/)
 
-Backend
+**AI / Model Training**
+- Computer Vision
+- [MTCNN](https://github.com/timesler/facenet-pytorch)
+- [PyTorch](https://pytorch.org/)
+- [VGGFace2](https://ieeexplore.ieee.org/document/8373813)
+- [InceptionResnetV1](https://github.com/timesler/facenet-pytorch)
+- [pgvector](https://github.com/pgvector/pgvector)
 
-Flask
-Gunicorn
+**Database**
+- SQL
+- [Supabase](https://supabase.com/)
 
-AI / Model Training
-
-Computer Vision
-MTCNN
-PyTorch
-VGGFace2
-InceptionResnetV1
-pgvector
-
-Database
-
-SQL
-Supabase Database
-
-Extra
-
-Google Colab — for model training
-WhatsApp API — for connection between user and us
-ChatGPT — for translation from Hindi/English to other languages and basic help
+**Extra**
+- [Google Colab](https://colab.research.google.com/) — for model training
+- [WhatsApp API](https://developers.facebook.com/docs/whatsapp) — for connection between user and us
+- [ChatGPT](https://chatgpt.com/) — for translation from Hindi/English to other languages and basic help
