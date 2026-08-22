@@ -150,7 +150,7 @@ khata_project/
 
 **Step 4:** Create `.env` in the root folder of the main folder, as shown in the project structure, in VS Code only.
 
-**Step 5:** Copy the given keys From "RUN ON YOUR SYSTEM" pdf above.
+**Step 5:** Copy the given keys From "RUN ON YOUR SYSTEM" pdf ; Link Of PDF : https://drive.google.com/file/d/1cPs9nbZJq8SuKytojBrMT4OKoNQ9EUQK/view?usp=drive_link.
 
 **Step 6:** After copying all 5 keys, paste them in the `.env` file and save the file in VS Code.
 
