@@ -26,7 +26,7 @@ Walk into almost any neighborhood kirana (grocery) store in India, and you'll fi
 
 Our project targets small and micro-entrepreneurs, street vendors, and merchandisers who face the problem of maintaining cash flow between customers and their shop, solved by building an automatic AI system.
 
-## Why Us
+## Whats Unique
 
 Solutions provided are:
 
