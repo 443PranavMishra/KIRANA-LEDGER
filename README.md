@@ -163,3 +163,11 @@ khata_project/
 **Step 11:** Copy and paste it in the browser.
 
 **Step 12:** Now the website is ready to use as a shop owner and customer.
+
+---
+
+## Some Flaws Of Current Project — IMPORTANT!
+
+- Sometimes the scanner fails for a few seconds due to the high model size — if this occurs, kindly reload the website.
+- Sometimes customer scanning and the dashboard show NaN due to a weak server/database-side network.
+- These problems occur very rarely.
