@@ -182,3 +182,18 @@ khata_project/
 4. Making the relationship between customer and shop owner **more transparent and trustworthy**.
 5. A **chat box** where shop owners can directly message customers, and customers can directly contact a particular shop owner regarding any query.
 6. A **comparison listing of shops with a rating system**, so customers can visualize and choose the best products and most reliable credit shops.
+
+## Sources
+
+1) **Face Model Dataset Source**: [VGGFace2](https://www.robots.ox.ac.uk/~vgg/data/vgg_face2/) — Visual Geometry Group, University of Oxford (Cao, Shen, Xie, Parkhi, Zisserman, 2018). Accessed via `facenet-pytorch`'s pretrained `InceptionResnetV1` weights, not trained from scratch on this dataset ourselves.
+
+2) **API Sources**:
+   - [Supabase](https://supabase.com/) — database, authentication, and file storage
+   - [WhatsApp Click to Chat](https://faq.whatsapp.com/425247423114725) — used for the Contact Us handoff (a URL scheme, not an authenticated API — no API key involved)
+   - [Web Speech API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Speech_API) — browser-native, powers the spoken confirmations
+
+---
+
+## Credits
+- Pranav Mishra
+- Prakhar Mishra
