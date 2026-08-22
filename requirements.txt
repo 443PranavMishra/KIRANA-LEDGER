@@ -7,3 +7,6 @@ gunicorn
 numpy
 requests
 tqdm
+torch
+torchvision
+facenet-pytorch
