@@ -97,3 +97,13 @@ WhatsApp help from our side for customers and shop owners, for any problem or co
 - [Google Colab](https://colab.research.google.com/) — for model training
 - [WhatsApp API](https://developers.facebook.com/docs/whatsapp) — for connection between user and us
 - [ChatGPT](https://chatgpt.com/) — for translation from Hindi/English to other languages and basic help
+
+---
+
+## How It Works — The Face Recognition Pipeline
+
+1. **Capture** — the browser takes a photo using the device's camera.
+2. **Detect** — `MTCNN` finds and crops just the face out of that photo.
+3. **Describe** — `InceptionResnetV1` turns the face into 512 numbers that mathematically describe it.
+4. **Compare** — those numbers are matched against every stored face using cosine similarity.
+5. **Match or register** — a close-enough match means a recognized person; otherwise, it's treated as new and offered for registration.
