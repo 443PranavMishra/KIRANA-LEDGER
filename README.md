@@ -37,25 +37,30 @@ extended informal credit to their regular customers for generations.
 
 It also has real problems:
 
-- **No backup.** If the notebook is lost, damaged, or a page gets torn
-  out, that record of who owes what is simply gone.
-- **No record for the customer.** Disputes over "how much do I owe you
-  again?" are common and have no independent record to settle them.
-- **No data for the shop owner.** A shop owner extending real credit
-  every day has zero visibility into their own business — how much
-  credit is outstanding right now, which customers are reliable, how
-  the shop is actually growing.
-- **Excluded from formal finance.** This is real lending activity —
-  informal microcredit happening at massive scale across India — but
-  because it's never digitized, it never becomes a credit history that
-  could help a shop owner access a business loan or a formal line of
-  credit.
+- **No backup.** Notebook lost, damaged, or a page torn out — that
+  record of who owes what is simply gone.
+- **No record for the customer.** Disputes over "how much do I owe
+  you again?" are common, with no independent record to settle them.
+- <mark>**Daily budgeting is manual and time-consuming.**</mark> Every
+  day, the shop owner has to work out totals by hand — what's
+  outstanding, what came in — just to know where the business stands.
+- <mark>**Real risk of losing money.**</mark> Tracking every customer
+  by memory means a real chance some credit is simply never collected
+  — forgotten, disputed, or the customer never comes back.
+- **Inventory and credit get tangled together.** Which customer took
+  which product, how much it cost, and on what day — all living in
+  one handwritten line, easy to misremember or misread later.
+- **No data for the shop owner.** Zero visibility into the business —
+  how much credit is outstanding right now, which customers are
+  reliable, how the shop is actually growing.
+- **Excluded from formal finance.** Real microcredit activity, at
+  massive scale across India — but because it's never digitized, it
+  never becomes a credit history that could help a shop owner access
+  a formal loan.
 - **A digital solution has to actually fit these users.** Any app that
   assumes comfortable typing, English fluency, or patience for
-  usernames and passwords will simply not get used by a large share of
-  both shop owners and their customers — many of whom are older, less
-  formally educated, or simply used to a system that has always just
-  worked by memory and trust.
+  usernames and passwords simply won't get used by a large share of
+  both shop owners and their customers.
 
 ## How This Fits "AI for Public Good"
 
@@ -74,7 +79,8 @@ rather than as an afterthought:
 | **Digital literacy** | The core interaction for *every* customer is a face scan — nothing to type, nothing to remember. A customer who has never used a smartphone app can still be recognized and served in seconds. |
 | **Local languages** | The entire interface — every button, label, and message — works in **English, Hindi, Marathi, Telugu, and Tamil**, switchable instantly, no page reload. |
 | **Accessibility** | Every major action is confirmed **out loud**, in the selected language — genuinely useful for anyone less comfortable reading small on-screen text, not just a nice-to-have. |
-| **Affordability** | Runs entirely on free-tier infrastructure (Supabase's free database/storage tier; can be hosted for free or run on a shop owner's own computer). No subscription, no per-transaction fee. |
+| **Affordability** | <mark>**Zero barrier to entry.**</mark> No subscription, no per-transaction fee, no upfront investment — a shop owner can start digitizing their khata today with nothing more than a phone and a camera. |
+| **Shared transparency** | <mark>**Both sides see the same ledger.**</mark> Shop owner and customer look at identical credit and payment records — no more "he said, she said," because there's nothing hidden from either side. |
 | **Financial inclusion** | For the first time, a shop owner gets a real **dashboard**: total credit outstanding, collection trends, growth over time — the exact kind of data a formal lender would want to see, generated automatically from data the shop owner is already producing just by running their business. |
 | **Meeting people where they are** | Payments go through **UPI**, India's dominant digital payment rail, and support requests go through **WhatsApp** — not a new app or channel we're asking anyone to adopt, but the ones already in every pocket. |
 
@@ -85,15 +91,20 @@ account, tracks what they buy on credit and what they pay back, and
 both sides can see the full picture at any time — the same trust-based
 system as a paper khata, digitized.**
 
-For the shop owner, it replaces the notebook with something that can't
-be lost, gives them real business insight they never had, and lets
-customers manage part of the relationship themselves (checking dues,
-requesting credit, paying online) without a phone call.
-
-For the customer, it means being able to check exactly what they owe
-— across *every* shop that uses the system, not just one — from
-anywhere, without needing to trust their own memory or the shop
-owner's handwriting.
+- **For the shop owner** — replaces the notebook with something that
+  can't be lost, gives real business insight they never had before,
+  and lets customers handle part of the relationship themselves
+  (checking dues, requesting credit, paying online) without a phone
+  call every time.
+- **For the customer** — see exactly what they owe, across *every*
+  shop that uses the system, from anywhere, without depending on
+  their own memory or the shop owner's handwriting.
+- <mark>**Transparency and trust, built in.**</mark> The credit flow
+  isn't something one side controls and the other has to take on
+  faith — both the shop owner and the customer see the exact same
+  numbers, the exact same history, at the exact same time. Disputes
+  don't need a "he said, she said" — there's one shared source of
+  truth both sides already agree on.
 
 ## Who This Is For
 
@@ -165,12 +176,12 @@ generalizes.
 - **Contact support on WhatsApp**
 
 ### Across the whole app
-- **5 languages** — English, Hindi, Marathi, Telugu, Tamil — switching
-  is instant and affects every screen, including dynamically-loaded
-  content
-- **Spoken confirmations** in the selected language for key actions
-  (account created, credit added, payment recorded, fully paid) —
-  toggle-able, genuinely useful for lower-literacy users
+- <mark>**5 languages**</mark> — English, Hindi, Marathi, Telugu, Tamil
+  — switching is instant and affects every screen, including
+  dynamically-loaded content
+- <mark>**Spoken confirmations**</mark> in the selected language for
+  key actions (account created, credit added, payment recorded, fully
+  paid) — toggle-able, genuinely useful for lower-literacy users
 - **Built to run on nothing** — free-tier database/storage, no card
   required to self-host on at least one platform we tested end-to-end
 
@@ -185,15 +196,27 @@ generalizes.
   storage for photos and payment screenshots, all on their free tier
 
 **AI / Computer Vision**
+- <mark>**Computer Vision**</mark> — the entire face-scan login and
+  matching system is a real computer vision pipeline: face detection,
+  face embedding, and vector similarity search, running end to end
 - [PyTorch](https://pytorch.org/) (CPU-only build — no GPU required)
 - [facenet-pytorch](https://github.com/timesler/facenet-pytorch) —
-  provides two models:
+  provides two CNN-based models:
   - **MTCNN** — detects and crops the face from a photo
   - **InceptionResnetV1** (pretrained on VGGFace2) — turns a detected
     face into a 512-dimensional numerical "fingerprint" (embedding)
 - **pgvector** (inside Postgres) — stores every face embedding and
   finds the closest match via cosine-similarity search, directly in
   the database
+
+> **A note on accuracy**: the models above (MTCNN, InceptionResnetV1)
+> are convolutional (CNN-based) architectures, not Vision Transformers
+> — and no training or fine-tuning happened in Google Colab or
+> anywhere else in this project's development; it runs on standard
+> off-the-shelf pretrained weights. Both were considered here, but
+> we'd rather list what's actually running than claim technology that
+> isn't. A fine-tuned or transformer-based model is a genuine, honest
+> next step — see [Known Limitations](#known-limitations--whats-next).
 
 **Frontend**
 - Vanilla HTML, CSS, and JavaScript — no framework, no build step,
@@ -310,73 +333,102 @@ khata_project/
 
 ## Running This On Your Own Computer
 
-### 1. Get the code
+### Step 1 — Download everything from GitHub
+
+Download or `git clone` the entire repository, including the
+`models/` folder. (The face-recognition model file itself,
+`facenet_model.pt`, is optional — the app runs fine without it using
+standard pretrained weights. See `models/README.md` if you want to add
+one.)
+
 ```bash
 git clone <this-repo-url>
-cd khata_project
 ```
 
-### 2. Set up your database (Supabase — free, no card required)
+### Step 2 — Create a separate project folder
 
-You have two options here:
+Make a new, empty folder on your computer specifically for this
+project — don't mix it into an existing folder with other code.
 
-**Option A — Use your own Supabase project (recommended for most people).**
-1. Create a free account at [supabase.com](https://supabase.com) and a
-   new project.
-2. In that project's **SQL Editor**, paste and run the entire contents
-   of `database/schema.sql`.
-3. In **Storage**, create three buckets, all with public access ON:
-   `customer-photos`, `shopkeeper-photos`, `payment-screenshots`.
-4. In **Project Settings → API**, copy your **Project URL** and your
-   **`secret` key** (not the `publishable`/`anon` one — the app needs
-   elevated, server-side access).
+### Step 3 — Paste everything in, keeping the same structure
 
-**Option B — Ask the maintainer for shared access.** If you've been
-given a `SUPABASE_URL` and `SUPABASE_SERVICE_KEY` directly by someone
-already running this project, you can use those instead of creating
-your own project — you'll be working against their live data rather
-than a fresh empty database. **Never commit these values to a public
-repo or share them anywhere public** — treat them exactly like a
-password, since the secret key grants full read/write access to the
-entire database. If you were given credentials this way, ask the
-person who shared them to rotate the key once you're done, which
-instantly revokes access without needing anything from you.
+Copy every file and folder from the download into your new project
+folder, preserving the exact structure shown in
+[Project Structure](#project-structure) above — `app.py`,
+`requirements.txt`, `static/`, `templates/`, `database/`, and so on,
+all directly inside your new folder, not nested in a subfolder.
 
-### 3. Configure your environment
-```bash
-cp .env.example .env
-```
-Then fill in `.env`:
+### Step 4 — Create your `.env` file
+
+Inside that same folder, copy `.env.example` to a new file named
+`.env`.
+
+### Step 5 — Fill in your credentials
+
+Open `.env` and fill in the values below. You'll need a Supabase
+project first — two ways to get one:
+
+- **Create your own (recommended)** — free account at
+  [supabase.com](https://supabase.com), new project, then:
+  - Run the entire contents of `database/schema.sql` in that project's
+    **SQL Editor**
+  - Create three **Storage** buckets, all with public access ON:
+    `customer-photos`, `shopkeeper-photos`, `payment-screenshots`
+  - Copy your **Project URL** and **`secret` key** (not
+    `publishable`/`anon`) from **Project Settings → API**
+- **Use shared credentials** — if someone already running this
+  project gave you a `SUPABASE_URL` and `SUPABASE_SERVICE_KEY`
+  directly, use those instead of creating your own project. **Never
+  commit these to a public repo or share them anywhere public** —
+  treat them exactly like a password.
+
 ```
 SUPABASE_URL=https://your-project-ref.supabase.co
 SUPABASE_SERVICE_KEY=sb_secret_...
-FLASK_SECRET_KEY=<run the command below>
+FLASK_SECRET_KEY=<see below>
 CONTACT_WHATSAPP_NUMBER=<your number, e.g. 919876543210>
 FLASK_DEBUG=false
 ```
-Generate a real `FLASK_SECRET_KEY` (don't make one up — it needs to be
-genuinely random):
+For `FLASK_SECRET_KEY`, generate a genuinely random one — don't make
+one up:
 ```bash
 python -c "import secrets; print(secrets.token_hex(32))"
 ```
+Full reference for every variable: [Environment Variables](#environment-variables).
 
-### 4. Install dependencies (in this specific order)
+### Step 6 — Open a terminal in VS Code
+
+Open the project folder in VS Code, then open a new terminal
+(**Terminal → New Terminal**) so you're working directly inside the
+project.
+
+### Step 7 — Install dependencies
+
+This needs to happen in a specific order — `pip install -r requirements.txt` on its own **will fail** for this project. Run all
+three, in this order:
+
 ```bash
 pip install torch torchvision --index-url https://download.pytorch.org/whl/cpu
 pip install facenet-pytorch --no-deps
 pip install -r requirements.txt
 ```
-(This order matters — see the comments inside `requirements.txt` for
-exactly why. Short version: `facenet-pytorch`'s own packaging points at
-an old `torch` version that no longer exists anywhere; installing
-`torch` first and then skipping `facenet-pytorch`'s outdated dependency
-check avoids the problem entirely.)
+(Why: `facenet-pytorch`'s own packaging points at an old `torch`
+version that no longer exists anywhere online; installing `torch`
+first and then skipping `facenet-pytorch`'s outdated dependency check
+avoids the problem entirely. Full explanation in the comments inside
+`requirements.txt`.)
 
-### 5. Run it
+### Step 8 — Run the app
+
 ```bash
 python app.py
 ```
-Open **http://localhost:5000**.
+
+### Step 9 — Open it in your browser
+
+The terminal will print a local address — something like
+`http://127.0.0.1:5000` or `http://localhost:5000`. Copy that and
+paste it into your web browser.
 
 ## Environment Variables
 
@@ -387,6 +439,9 @@ Open **http://localhost:5000**.
 | `FLASK_SECRET_KEY` | Recommended | Signs login session cookies; falls back to an insecure default if unset |
 | `CONTACT_WHATSAPP_NUMBER` | Optional | Powers the in-app "Contact Us" WhatsApp button; without it, support requests still save to the database, just without the WhatsApp handoff |
 | `FLASK_DEBUG` | Optional | Set to `false` for anything other than local development on your own machine |
+
+See [Step 5](#running-this-on-your-own-computer) above for exactly
+where each value comes from.
 
 ## Known Limitations & What's Next
 
