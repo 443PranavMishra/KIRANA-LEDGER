@@ -151,11 +151,11 @@ khata_project/
 
 **Step 5:** Copy the given keys:
 
-SUPABASE_URL='https://ohuitpchbbbcewscdqgy.supabase.co'
-SUPABASE_SERVICE_KEY='sb_secret_ZOUUlUGUn6Uhs5tl2lKXLw_8euXhmXf'
-FLASK_SECRET_KEY='77a6a72fb30e570a7fc04e72b663623e37c92d45eebda9cc2b8658477c9eb404'
-CONTACT_WHATSAPP_NUMBER=919555969879
-FLASK_DEBUG=false
+- SUPABASE_URL='https://ohuitpchbbbcewscdqgy.supabase.co'
+- SUPABASE_SERVICE_KEY='sb_secret_ZOUUlUGUn6Uhs5tl2lKXLw_8euXhmXf'
+- FLASK_SECRET_KEY='77a6a72fb30e570a7fc04e72b663623e37c92d45eebda9cc2b8658477c9eb404'
+- CONTACT_WHATSAPP_NUMBER=919555969879
+- FLASK_DEBUG=false
 
 **Step 6:** After copying all 5 keys, paste them in the `.env` file and save the file in VS Code.
 
