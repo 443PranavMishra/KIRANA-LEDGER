@@ -20,6 +20,7 @@ Walk into almost any neighborhood kirana (grocery) store in India, and you'll fi
 - **Language difference problem** — not every shop owner or customer is comfortable reading or writing in English.
 - **Inventory and credit get tangled together** — hard to remember which customer took which product, for how much, and when.
 
+---
 
 ## Theme Chosen: AI for Micro-Entrepreneurs and Street Vendors
 
