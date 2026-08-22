@@ -60,4 +60,3 @@ Solutions provided are:
 - **Pay dues online** — pay via your UPI app or upload a screenshot as proof.
 - **Request more credit** remotely, picking products from the shop's own catalog.
 - **Leave feedback** about the shop, a product, or staff.
-- **Contact support** directly on WhatsApp.
