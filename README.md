@@ -111,6 +111,9 @@ WhatsApp help from our side for customers and shop owners, for any problem or co
 ---
 
 ### Project Structure
+## Project Structure
+
+```
 khata_project/
 ├── app.py                          Flask backend — all routes & logic
 ├── requirements.txt                Python dependencies
@@ -121,7 +124,8 @@ khata_project/
 │   ├── schema.sql                  Full database schema + migrations
 │   └── verify_schema.sql           Diagnostic: confirms what's deployed
 ├── static/
-│   ├── css/style.css
+│   ├── css/
+│   │   └── style.css
 │   ├── js/
 │   │   ├── i18n.js                 5-language system + in-app Help
 │   │   ├── auth.js                 Shop owner login / registration
@@ -130,5 +134,7 @@ khata_project/
 │   │   ├── voice.js                Spoken confirmations
 │   │   └── app.js                  Core app: scanning, dashboard, etc.
 │   └── images/
+│       └── khata-bg.jpg
 └── templates/
     └── index.html                  The app's single HTML entry point
+```
