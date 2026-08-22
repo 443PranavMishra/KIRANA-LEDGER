@@ -149,11 +149,7 @@ khata_project/
 
 **Step 4:** Create `.env` in the root folder of the main folder, as shown in the project structure, in VS Code only.
 
-**Step 5:** Copy the given keys:
-
-- SUPABASE_URL='https://ohuitpchbbbcewscdqgy.supabase.co'
-- SUPABASE_SERVICE_KEY='sb_secret_ZOUUlUGUn6Uhs5tl2lKXLw_8euXhmXf'
-- CONTACT_WHATSAPP_NUMBER=919555969879
+**Step 5:** Copy the given keys From "RUN ON YOUR SYSTEM" pdf above.
 
 **Step 6:** After copying all 5 keys, paste them in the `.env` file and save the file in VS Code.
 
