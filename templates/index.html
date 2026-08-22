@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Khata — Shop Ledger</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bitter:wght@500;600;700;800&family=Inter:wght@400;500;600;700&family=Kalam:wght@400;700&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+
+<!-- ============ SITE-WIDE NAVBAR (present on every screen) ============ -->
+<nav class="kh-navbar visible" id="khNavbar">
+  <div class="kh-nav-left">
+    <button class="kh-nav-btn kh-nav-back-btn hidden" id="navBackBtn">
+      <span>←</span> <span id="i-navback-btn">Back</span>
+    </button>
+    <button class="kh-nav-btn hidden" id="manageDashboardBtn" style="position:relative;">
+      <span id="i-managedashboard-btn">📊 Dashboard</span>
+      <span class="request-badge hidden" id="dashboardBadge">0</span>
+    </button>
+    <button class="kh-nav-btn kh-nav-logout-btn hidden" id="logoutBtn"><span id="i-logout-btn">Logout</span></button>
+  </div>
+  <div class="kh-nav-center">
+    <span class="kh-nav-center-badge">📒</span> <span id="navCenterTitle">Kirana Ledger</span>
+  </div>
+  <div class="kh-nav-right">
+    <select id="navLangSelect" class="kh-nav-lang-select" title="Choose language / भाषा चुनें">
+      <option value="en">English</option>
+      <option value="hi">हिंदी</option>
+      <option value="mr">मराठी</option>
+      <option value="te">తెలుగు</option>
+      <option value="ta">தமிழ்</option>
+    </select>
+    <div class="kh-nav-mic-btn" id="voiceToggle" title="Toggle voice announcements">
+      <svg viewBox="0 0 24 24" fill="none" id="voiceIcon"><path d="M11 5 6 9H3v6h3l5 4V5z" stroke="#F4ECD8" stroke-width="1.6" stroke-linejoin="round"/><path d="M15.5 8.5a5 5 0 0 1 0 7" stroke="#F4ECD8" stroke-width="1.6" stroke-linecap="round"/></svg>
+    </div>
+  </div>
+</nav>
+
+<div class="app" id="authApp">
+
+
+  <!-- ============ ROLE CHOICE (the very first screen) ============ -->
+  <div id="roleChoiceView" class="role-split">
+    <div class="role-panel">
+      <div class="role-panel-card role-panel-owner" id="goShopOwnerBtn">
+        <div class="role-hero">
+          <span class="role-hero-badge">📒 Khata</span>
+          <svg viewBox="0 0 200 210" xmlns="http://www.w3.org/2000/svg">
+            <ellipse cx="100" cy="200" rx="70" ry="8" fill="rgba(43,36,26,0.12)"/>
+            <rect x="34" y="150" width="132" height="40" rx="6" fill="#F4ECD8"/>
+            <rect x="34" y="150" width="132" height="10" rx="4" fill="#2B241A" opacity="0.85"/>
+            <rect x="48" y="166" width="26" height="18" rx="2" fill="#A33B2E" opacity="0.55"/>
+            <rect x="87" y="166" width="26" height="18" rx="2" fill="#C08A2E" opacity="0.55"/>
+            <rect x="126" y="166" width="26" height="18" rx="2" fill="#3F6B4A" opacity="0.55"/>
+            <path d="M62 150 C62 96 78 68 100 68 C122 68 138 96 138 150 Z" fill="#E8722A"/>
+            <ellipse cx="100" cy="94" rx="26" ry="27" fill="#C98A56"/>
+            <path d="M74 84 C74 55 88 40 100 40 C112 40 126 55 126 84 C118 74 110 70 100 70 C90 70 82 74 74 84 Z" fill="#A33B2E"/>
+            <circle cx="100" cy="42" r="6" fill="#C08A2E"/>
+            <path d="M80 78 Q100 92 120 78" stroke="#3D2E14" stroke-width="2.4" fill="none" stroke-linecap="round"/>
+            <path d="M84 108 Q100 118 116 108" stroke="#2B241A" stroke-width="3" fill="none" stroke-linecap="round"/>
+            <circle cx="88" cy="98" r="2.6" fill="#2B241A"/>
+            <circle cx="112" cy="98" r="2.6" fill="#2B241A"/>
+            <path d="M100 118 L100 150" stroke="#2B241A" stroke-width="2" opacity="0.3"/>
+            <path d="M70 150 C74 130 86 122 100 122 C114 122 126 130 130 150 Z" fill="#C08A2E"/>
+          </svg>
+        </div>
+        <div class="role-content">
+          <div class="role-label" id="i-role-owner-label">For Shop Owners</div>
+          <h2 class="role-title" id="i-role-owner-title">Manage Your Shop</h2>
+          <p class="role-desc" id="i-role-owner-desc">Track customer credit, payments, and your full ledger — all in one place.</p>
+          <div class="role-feature-row">
+            <div class="role-feature">
+              <span class="role-feature-icon">💳</span>
+              <div class="role-feature-title" id="i-feature-credit-title">Credit tracking</div>
+              <div class="role-feature-sub" id="i-feature-credit-sub">One shop-wide limit</div>
+            </div>
+            <div class="role-feature">
+              <span class="role-feature-icon">📊</span>
+              <div class="role-feature-title" id="i-feature-ledger-title">Full ledger</div>
+              <div class="role-feature-sub" id="i-feature-ledger-sub">Always searchable</div>
+            </div>
+          </div>
+          <div class="role-cta" id="i-role-owner-cta">Enter as Shop Owner →</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="role-divider">
+      <div class="role-divider-badge">📒<br>KHATA</div>
+    </div>
+
+    <div class="role-panel">
+      <div class="role-panel-card role-panel-customer" id="goCustomerPortalBtn">
+        <div class="role-hero">
+          <span class="role-hero-badge">📒 Khata</span>
+          <svg viewBox="0 0 200 210" xmlns="http://www.w3.org/2000/svg">
+            <ellipse cx="100" cy="200" rx="70" ry="8" fill="rgba(43,36,26,0.12)"/>
+            <path d="M64 150 C64 104 78 78 100 78 C122 78 136 104 136 150 Z" fill="#3F6B4A"/>
+            <ellipse cx="100" cy="98" rx="25" ry="26" fill="#C98A56"/>
+            <path d="M76 88 C76 66 86 52 100 52 C114 52 124 66 124 88 C124 78 114 72 100 72 C86 72 76 78 76 88 Z" fill="#2B241A"/>
+            <path d="M83 112 Q100 122 117 112" stroke="#2B241A" stroke-width="3" fill="none" stroke-linecap="round"/>
+            <circle cx="89" cy="100" r="2.6" fill="#2B241A"/>
+            <circle cx="111" cy="100" r="2.6" fill="#2B241A"/>
+            <rect x="128" y="126" width="34" height="46" rx="6" fill="#F4ECD8" stroke="#2B241A" stroke-width="2"/>
+            <rect x="134" y="134" width="22" height="14" rx="2" fill="#3F6B4A" opacity="0.5"/>
+            <rect x="134" y="152" width="22" height="4" rx="2" fill="#C08A2E"/>
+            <rect x="134" y="160" width="14" height="4" rx="2" fill="#A33B2E"/>
+            <path d="M118 138 L128 148" stroke="#2B241A" stroke-width="2.4" stroke-linecap="round"/>
+            <path d="M72 150 C76 128 88 118 100 118 C112 118 124 128 128 150 Z" fill="#3F6B4A" opacity="0.85"/>
+          </svg>
+        </div>
+        <div class="role-content">
+          <div class="role-label" id="i-role-customer-label">For Customers</div>
+          <h2 class="role-title" id="i-role-customer-title">Check Your Dues</h2>
+          <p class="role-desc" id="i-role-customer-desc">See what you owe, across every shop that uses this system.</p>
+          <div class="role-feature-row">
+            <div class="role-feature">
+              <span class="role-feature-icon">🔍</span>
+              <div class="role-feature-title" id="i-feature-lookup-title">Instant lookup</div>
+              <div class="role-feature-sub" id="i-feature-lookup-sub">Face scan or phone</div>
+            </div>
+            <div class="role-feature">
+              <span class="role-feature-icon">🧾</span>
+              <div class="role-feature-title" id="i-feature-history-title">Full history</div>
+              <div class="role-feature-sub" id="i-feature-history-sub">Every payment logged</div>
+            </div>
+          </div>
+          <div class="role-cta" id="i-role-customer-cta">Check My Dues →</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ AUTH: CHOICE SCREEN ============ -->
+  <div id="authChoiceView" class="hidden">
+    <div class="masthead">
+      <div class="shop-badge" id="i-badge-choice">📒 Digital Khata</div>
+      <h1 id="i-title-choice">Kirana Ledger</h1>
+      <div class="sub" id="i-choice-sub">Login to see your shop's ledger</div>
+    </div>
+    <div class="auth-card">
+      <p class="auth-title" id="i-welcome-title">Welcome</p>
+      <p class="auth-sub" id="i-welcome-sub">Every shop's data is private and separate</p>
+      <div class="auth-choice-row">
+        <button class="auth-choice-btn primary" id="goLoginBtn"><span id="i-login-btn">Login</span></button>
+        <button class="auth-choice-btn" id="goRegisterBtn"><span id="i-register-btn">Register your shop</span></button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ AUTH: LOGIN — SCAN FIRST ============ -->
+  <div id="authLoginScanView" class="hidden">
+    <div class="masthead">
+      <h1 style="font-size:26px;" id="i-loginscan-title">Login</h1>
+      <div class="sub" id="i-loginscan-sub">Scan your face to open your shop</div>
+    </div>
+    <div class="scan-stage">
+      <div class="polaroid">
+        <div class="tape tl"></div>
+        <div class="tape tr"></div>
+        <div class="viewfinder">
+          <video id="loginVideo" autoplay playsinline></video>
+          <canvas id="loginCanvas"></canvas>
+        </div>
+        <div class="polaroid-caption" id="i-loginscan-caption">that's you, right?</div>
+      </div>
+    </div>
+    <button class="scan-btn" id="loginScanBtn"><span id="i-loginscan-btn">Scan to login</span></button>
+    <div class="status-line" id="loginStatusLine"></div>
+    <button class="auth-link" id="showFallbackBtn"><span id="i-showfallback-btn">Scan not working? Use phone / password / unique ID</span></button>
+  </div>
+
+  <!-- ============ AUTH: LOGIN — FALLBACK ============ -->
+  <div id="authLoginFallbackView" class="hidden">
+    <div class="masthead">
+      <h1 style="font-size:26px;" id="i-loginfallback-title">Login</h1>
+      <div class="sub" id="i-loginfallback-sub">Use your phone number, or your unique ID if you forgot your password</div>
+    </div>
+    <div class="auth-card">
+      <div class="fallback-tabs">
+        <button class="fallback-tab active" data-tab="password"><span id="i-tab-password">Phone + Password</span></button>
+        <button class="fallback-tab" data-tab="uniqueid"><span id="i-tab-uniqueid">Forgot password? Unique ID</span></button>
+      </div>
+
+      <form id="passwordLoginForm">
+        <label id="i-label-loginphone">Phone number</label>
+        <input type="tel" id="loginPhone" maxlength="10" inputmode="numeric" placeholder="10-digit number" required>
+        <label id="i-label-loginpassword">Password</label>
+        <input type="password" id="loginPassword" maxlength="8" placeholder="8-character password" required>
+        <p class="error-text hidden" id="passwordLoginError"></p>
+        <button type="submit" class="save-btn"><span id="i-login-submit-btn">Login</span></button>
+      </form>
+
+      <form id="uniqueIdLoginForm" class="hidden">
+        <div class="important-box">
+          <span class="ib-title" id="i-uniqueid-warn-title">⚠ Important</span>
+          <span id="i-uniqueid-warn-body">Your Unique ID is your master recovery key. Anyone with it can access your shop's data — never share it.</span>
+        </div>
+        <label id="i-label-uniqueid">Unique ID</label>
+        <input type="text" id="loginUniqueId" placeholder="e.g. K7M2X9QANP" style="text-transform:uppercase;" required>
+        <p class="error-text hidden" id="uniqueIdLoginError"></p>
+        <button type="submit" class="save-btn"><span id="i-uniqueid-submit-btn">Login with Unique ID</span></button>
+      </form>
+    </div>
+  </div>
+
+  <!-- ============ AUTH: REGISTER — PHOTO ============ -->
+  <div id="authRegisterPhotoView" class="hidden">
+    <div class="masthead">
+      <h1 style="font-size:26px;" id="i-regphoto-title">Register your shop</h1>
+      <div class="sub" id="i-regphoto-sub">First, take your photo — this is how you'll log in from now on</div>
+    </div>
+    <div class="scan-stage">
+      <div class="polaroid">
+        <div class="tape tl"></div>
+        <div class="tape tr"></div>
+        <div class="viewfinder">
+          <video id="regVideo" autoplay playsinline></video>
+          <canvas id="regCanvas"></canvas>
+        </div>
+        <div class="polaroid-caption" id="i-regphoto-caption">smile, shopkeeper</div>
+      </div>
+    </div>
+    <button class="scan-btn" id="regCaptureBtn"><span id="i-regcapture-btn">Capture photo</span></button>
+  </div>
+
+  <!-- ============ AUTH: REGISTER — DETAILS FORM ============ -->
+  <div id="authRegisterFormView" class="hidden">
+    <div class="ledger-page">
+      <div class="new-customer-tag">
+        <img id="regPhotoPreview" src="" alt="">
+        <span id="i-photocaptured">Photo captured</span>
+      </div>
+      <p class="form-title" id="i-shopdetails-title">Shop details</p>
+
+      <div class="important-box">
+        <span class="ib-title" id="i-regwarn-title">⚠ Important — please read</span>
+        <span id="i-regwarn-body">Your password and Unique ID are the only way into your account if face
+        scanning ever fails. This app <b>cannot recover them for you</b>.
+        Write them down and keep them somewhere safe.</span>
+      </div>
+
+      <form id="registerForm">
+        <label id="i-label-regname">Your name *</label>
+        <input type="text" id="regName" required>
+
+        <label id="i-label-regphone">Phone number * (used if face scan fails)</label>
+        <input type="tel" id="regPhone" maxlength="10" inputmode="numeric" placeholder="10-digit number" required>
+
+        <label id="i-label-shopname">Shop name *</label>
+        <input type="text" id="regShopName" required>
+
+        <label id="i-label-shopaddress">Shop address</label>
+        <input type="text" id="regShopAddress" placeholder="e.g. Main Bazaar Road, near temple">
+
+        <label id="i-label-defaultcreditlimit">Default credit limit for all customers (optional)</label>
+        <input type="number" id="regDefaultCreditLimit" min="0" step="0.01" placeholder="e.g. 2000 (or leave blank)">
+        <div class="hint-text" id="i-defaultcreditlimit-hint">Applied to every customer automatically. You can change this any time from your shop dashboard — it updates for everyone at once.</div>
+
+        <div class="important-box">
+          <span class="ib-title" id="i-paymentdetails-warn-title">⚠ Where customers repay you</span>
+          <span id="i-paymentdetails-warn-body">Double-check this carefully — this is where customer repayments will actually be sent. A typo means money going to the wrong place.</span>
+        </div>
+
+        <label id="i-label-upi">UPI ID *</label>
+        <input type="text" id="regUpi" placeholder="e.g. 9876543210@ybl" required>
+        <div class="hint-text" id="i-upi-hint">The identifier customers will pay via UPI apps like GPay, PhonePe, or Paytm. Customers will also see your registered phone number above as a second way to identify your shop.</div>
+
+        <label id="i-label-regpassword">Create password * (exactly 8 characters, letters + numbers)</label>
+        <input type="text" id="regPassword" maxlength="8" placeholder="e.g. Shop2026" required>
+        <div class="hint-text" id="i-regpassword-hint">Used if face scan fails. Remember this — write it down.</div>
+
+        <p class="error-text hidden" id="registerError"></p>
+        <button type="button" class="auth-link hidden" id="goToLoginFromDuplicateBtn" style="text-decoration:none; background:var(--paper); border-radius:4px; padding:10px; margin-top:6px; font-weight:600;"><span id="i-gotologin-btn">Go to login →</span></button>
+        <button type="submit" class="save-btn"><span id="i-createaccount-btn">Create my shop account</span></button>
+      </form>
+    </div>
+  </div>
+
+  <!-- ============ AUTH: REGISTER — SHOW UNIQUE ID ============ -->
+  <div id="authUniqueIdView" class="hidden">
+    <div class="ledger-page" style="text-align:center;">
+      <p style="font-family:'Bitter',serif; font-size:20px; margin:0 0 4px;" id="i-accountcreated">Account created!</p>
+      <p style="font-size:13px; color:var(--ink-dim);" id="i-uniqueid-sub">This is your Unique ID — your master recovery key</p>
+      <div class="unique-id-reveal">
+        <div class="unique-id-value" id="uniqueIdDisplay">—</div>
+        <div style="font-size:11px; color:var(--ink-dim);" id="i-uniqueid-shownonce">Shown only once. Write it down now.</div>
+      </div>
+      <div class="important-box" style="text-align:left;">
+        <span class="ib-title" id="i-keepsafe-title">⚠ Keep this safe</span>
+        <span id="i-keepsafe-body">This ID logs into your shop even if you forget your password. If you lose
+        both your password <b>and</b> this ID, your account cannot be recovered.
+        Write it in your shop register, not just on your phone.</span>
+      </div>
+      <button class="scan-btn" id="uniqueIdContinueBtn" style="margin-top:16px;"><span id="i-continue-btn">I've saved it — continue to my shop</span></button>
+    </div>
+  </div>
+
+  <!-- ============ CUSTOMER PORTAL: SCAN ============ -->
+  <div id="cpScanView" class="hidden">
+    <div class="masthead">
+      <h1 style="font-size:26px;" id="i-cpscan-title">Check my dues</h1>
+      <div class="sub" id="i-cpscan-sub">Scan your face to see your credit at every shop</div>
+    </div>
+    <div class="scan-stage">
+      <div class="polaroid">
+        <div class="tape tl"></div>
+        <div class="tape tr"></div>
+        <div class="viewfinder">
+          <video id="cpVideo" autoplay playsinline></video>
+          <canvas id="cpCanvas"></canvas>
+        </div>
+        <div class="polaroid-caption" id="i-cpscan-caption">smile for the scanner</div>
+      </div>
+    </div>
+    <button class="scan-btn" id="cpScanBtn"><span id="i-cpscan-btn">Scan my face</span></button>
+    <div class="status-line" id="cpStatusLine"></div>
+    <button class="auth-link" id="cpShowFallbackBtn"><span id="i-cpfallback-link">Scan not working? Enter name &amp; phone instead</span></button>
+  </div>
+
+  <!-- ============ CUSTOMER PORTAL: NAME + PHONE FALLBACK ============ -->
+  <div id="cpFallbackView" class="hidden">
+    <div class="masthead">
+      <h1 style="font-size:26px;" id="i-cpfallback-title">Check my dues</h1>
+      <div class="sub" id="i-cpfallback-sub">Enter the name and phone number a shop registered you with</div>
+    </div>
+    <div class="auth-card">
+      <div class="important-box">
+        <span class="ib-title" id="i-cpfallback-warn-title">⚠ A note on privacy</span>
+        <span id="i-cpfallback-warn-body">This looks up records by name and phone number, not a private password. Only share this with someone you trust.</span>
+      </div>
+      <form id="cpFallbackForm">
+        <label id="i-label-cpname">Your name</label>
+        <input type="text" id="cpNameInput" required>
+        <label id="i-label-cpphone">Your phone number</label>
+        <input type="tel" id="cpPhoneInput" maxlength="10" inputmode="numeric" required>
+        <p class="error-text hidden" id="cpFallbackError"></p>
+        <button type="submit" class="save-btn"><span id="i-cpfallback-submit">Check my dues</span></button>
+      </form>
+    </div>
+  </div>
+
+  <!-- ============ CUSTOMER PORTAL: RESULTS ============ -->
+  <div id="cpResultsView" class="hidden">
+    <div class="masthead">
+      <h1 style="font-size:24px;" id="cpResultsName">Your credit summary</h1>
+      <div class="sub" id="i-cpresults-sub">Across every shop you're registered with</div>
+    </div>
+    <div id="cpShopCards"><!-- filled by JS: renderCpResults() --></div>
+  </div>
+
+  <!-- ============ CUSTOMER PORTAL: NOT FOUND / ALL CLEAR ============ -->
+  <div id="cpNotFoundView" class="hidden">
+    <div class="stamp-wrap"><div class="stamp" style="color:var(--paid-green); border-color:var(--paid-green);" id="i-cpclear-stamp">ALL CLEAR</div></div>
+    <div class="ledger-page" style="text-align:center; padding: 26px;">
+      <p style="font-family:'Bitter',serif; font-size:17px; margin:0;" id="i-cpclear-title">No dues found</p>
+      <p style="font-size:13px; color:var(--ink-dim); margin-top:8px;" id="i-cpclear-body">Either you're not registered as a customer anywhere yet, or you have no pending dues at any shop.</p>
+    </div>
+  </div>
+
+  <!-- ============ MAIN APP (only shown once logged in) ============ -->
+  <div id="appContent" class="hidden">
+    <div class="credit-limit-bar">
+      <span id="i-shoplimit-label">Credit limit for all customers:</span>
+      <b id="creditLimitDisplay">₹0</b>
+      <button class="credit-limit-edit-btn" id="editCreditLimitBtn"><span id="i-editlimit-btn">Edit</span></button>
+      <div class="credit-limit-editor hidden" id="creditLimitEditor">
+        <input type="number" id="creditLimitInput" min="0" step="0.01">
+        <button id="saveCreditLimitBtn"><span id="i-savelimit-btn">Save</span></button>
+        <button id="cancelCreditLimitBtn"><span id="i-cancellimit-btn">Cancel</span></button>
+      </div>
+    </div>
+
+    <div class="masthead">
+      <div class="shop-badge" id="i-badge-main">📒 Digital Khata</div>
+      <h1 id="i-title-main">Kirana Ledger</h1>
+      <div class="sub" id="i-subtitle-main">Scan a face, open their account</div>
+    </div>
+
+  <div id="scanView" class="view-fade">
+    <div class="scan-stage">
+      <svg class="paperclip" viewBox="0 0 34 52" fill="none">
+        <path d="M9 8 C9 3, 25 3, 25 8 L25 38 C25 44, 15 44, 15 38 L15 14 C15 11, 20 11, 20 14 L20 32" stroke="#9AA0A6" stroke-width="3.2" stroke-linecap="round"/>
+      </svg>
+      <div class="polaroid">
+        <div class="tape tl"></div>
+        <div class="tape tr"></div>
+        <div class="viewfinder">
+          <video id="video" autoplay playsinline></video>
+          <canvas id="canvas"></canvas>
+        </div>
+        <div class="polaroid-caption" id="i-whosthis">who's this?</div>
+      </div>
+    </div>
+    <button class="scan-btn" id="scanBtn">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M4 8V6a2 2 0 0 1 2-2h2M20 8V6a2 2 0 0 0-2-2h-2M4 16v2a2 2 0 0 0 2 2h2M20 16v2a2 2 0 0 1-2 2h-2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><circle cx="12" cy="12" r="3.5" stroke="currentColor" stroke-width="2"/></svg>
+      <span id="i-scancustomer-btn">Scan customer</span>
+    </button>
+    <div class="status-line" id="statusLine"></div>
+  </div>
+
+  <div id="dashboardView" class="hidden view-fade dash-full">
+    <nav class="dash-sidebar">
+      <div class="dash-sidebar-title">📊 <span id="i-dashboard-title">Dashboard</span></div>
+      <button class="dash-nav-link active" data-dash-anchor="dash-anchor-overview"><span>🏠</span> <span id="i-dashnav-overview">Overview</span></button>
+      <button class="dash-nav-link" data-dash-anchor="dash-anchor-products"><span>📦</span> <span id="i-dashnav-products">My Products</span></button>
+      <button class="dash-nav-link" data-dash-anchor="dash-anchor-requests"><span>🔔</span> <span id="i-dashnav-requests">Credit Requests</span></button>
+      <button class="dash-nav-link" data-dash-anchor="dash-anchor-payments"><span>💰</span> <span id="i-dashnav-payments">Payment Claims</span></button>
+      <button class="dash-nav-link" data-dash-anchor="dash-anchor-history"><span>🧾</span> <span id="i-dashnav-history">Payment History</span></button>
+      <button class="dash-nav-link" data-dash-anchor="dash-anchor-feedback"><span>💬</span> <span id="i-dashnav-feedback">Feedback</span></button>
+      <button class="dash-nav-link" data-dash-anchor="dash-anchor-settings"><span>🏦</span> <span id="i-dashnav-settings">Payment Settings</span></button>
+    </nav>
+
+    <div class="dash-main">
+    <div id="dash-anchor-overview" style="scroll-margin-top: 80px;"></div>
+    <div class="dash-kpi-row" id="dashKpiRow">
+      <div class="dues-empty">Loading…</div>
+    </div>
+
+    <!-- ── Two graphs ── -->
+    <div class="dash-charts-row">
+      <div class="dash-chart-card">
+        <div class="dash-chart-title" id="i-growthchart-title">📈 Shop Growth (last 6 months)</div>
+        <canvas id="growthChartCanvas" height="180"></canvas>
+      </div>
+      <div class="dash-chart-card">
+        <div class="dash-chart-title" id="i-duechart-title">📊 Customers: Due vs Clear</div>
+        <canvas id="dueChartCanvas" height="180"></canvas>
+      </div>
+    </div>
+
+    <div class="dues-section">
+      <div class="dues-header">
+        <span class="dues-title" id="i-duestitle">Customers Left To Pay</span>
+        <span class="dues-count" id="duesCount">0</span>
+      </div>
+      <input type="text" id="dueSearchInput" class="dues-search" placeholder="Search by name or phone number...">
+      <div class="dues-table-wrap">
+        <table class="dues-table">
+          <thead>
+            <tr>
+              <th id="i-th-name">Name</th>
+              <th id="i-th-phone">Phone</th>
+              <th id="i-th-took">Took</th>
+              <th id="i-th-paid">Paid</th>
+              <th id="i-th-left">Left</th>
+              <th id="i-th-datetaken">Date taken</th>
+            </tr>
+          </thead>
+          <tbody id="duesTableBody">
+            <tr><td colspan="6" class="dues-empty">Loading…</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- ── My Products ── -->
+    <div class="dash-section" id="dash-anchor-products">
+      <p class="dash-section-title" id="i-products-title">📦 My Products</p>
+      <div class="ledger-page">
+        <button class="scan-btn" id="showAddProductBtn" style="margin-bottom:14px;">
+          <span id="i-addproduct-btn">+ Add a product</span>
+        </button>
+
+        <div class="inline-form" id="addProductForm">
+          <label id="i-label-productname">Product name</label>
+          <input type="text" id="newProductName" placeholder="e.g. Basmati Rice 1kg">
+          <label id="i-label-productprice">Price (₹)</label>
+          <input type="number" id="newProductPrice" min="0.01" step="0.01" placeholder="e.g. 120">
+          <p class="error-text hidden" id="addProductError"></p>
+          <button class="confirm-btn" id="confirmAddProduct"><span id="i-saveproduct-btn">Save product</span></button>
+        </div>
+
+        <input type="text" id="productSearchInput" class="dues-search" style="margin-top:6px;" placeholder="Search your products...">
+
+        <div id="productsList" style="margin-top:12px;">
+          <div class="dues-empty" id="i-productsloading">Loading…</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Credit Requests ── -->
+    <div class="dash-section" id="dash-anchor-requests">
+      <p class="dash-section-title" id="i-requests-title">🔔 Credit Requests</p>
+      <div id="requestsList">
+        <div class="dues-empty" id="i-requestsloading">Loading…</div>
+      </div>
+    </div>
+
+    <!-- ── Payment Claims ── -->
+    <div class="dash-section" id="dash-anchor-payments">
+      <p class="dash-section-title" id="i-payments-title">💰 Payment Claims</p>
+      <div class="hint-text" style="margin-bottom:14px;" id="i-payments-sub">Customers who say they've paid you via UPI. Confirm only once you've actually seen the money — this app can't verify it automatically.</div>
+      <div id="paymentsList">
+        <div class="dues-empty" id="i-paymentsloading">Loading…</div>
+      </div>
+    </div>
+
+    <!-- ── Online Payment History ── -->
+    <div class="dash-section" id="dash-anchor-history">
+      <p class="dash-section-title" id="i-onlinepayments-title">🧾 Online Payment History</p>
+      <div class="hint-text" style="margin-bottom:14px;" id="i-onlinepayments-sub">Every online payment ever confirmed, permanently — screenshot included. In-person payments recorded at the counter aren't shown here.</div>
+      <input type="text" id="onlinePaymentsSearchInput" class="dues-search" style="margin-bottom:14px; border-radius:10px; border:1.5px solid var(--border);" placeholder="Search by date or amount...">
+      <div id="onlinePaymentsList">
+        <div class="dues-empty" id="i-onlinepaymentsloading">Loading…</div>
+      </div>
+    </div>
+
+    <!-- ── Complaints / Feedback ── -->
+    <div class="dash-section" id="dash-anchor-feedback">
+      <p class="dash-section-title" id="i-complaints-title">💬 Customer Feedback</p>
+      <div class="hint-text" style="margin-bottom:14px;" id="i-complaints-sub">Opinions customers have shared about your shop, a product, or your staff.</div>
+      <div id="complaintsList">
+        <div class="dues-empty" id="i-complaintsloading">Loading…</div>
+      </div>
+    </div>
+
+    <!-- ── Payment Settings ── -->
+    <div class="dash-section" id="dash-anchor-settings">
+      <p class="dash-section-title" id="i-paymentsettings-title">🏦 Payment Settings</p>
+
+      <!-- Step 1: view current details, locked until re-verified -->
+      <div id="bankDetailsView" class="ledger-page">
+        <div class="hint-text" style="margin-bottom:12px;" id="i-bankview-sub">Where customer repayments are sent. Verify your identity to make changes.</div>
+        <div id="bankDetailsDisplay">
+          <div class="dues-empty" id="i-bankdetailsloading">Loading…</div>
+        </div>
+        <button class="scan-btn" id="showReauthBtn" style="margin-top:16px;"><span id="i-editpayment-btn">🔒 Verify identity to edit</span></button>
+      </div>
+
+      <!-- Step 2: re-authentication (hidden until "edit" is tapped) -->
+      <div id="bankReauthView" class="ledger-page hidden" style="margin-top:16px;">
+        <p class="form-title" style="font-size:17px;" id="i-reauth-title">Verify it's really you</p>
+        <div class="fallback-tabs">
+          <button class="fallback-tab active" data-reauth-tab="password"><span id="i-reauthtab-password">Phone Password</span></button>
+          <button class="fallback-tab" data-reauth-tab="scan"><span id="i-reauthtab-scan">Face Scan</span></button>
+          <button class="fallback-tab" data-reauth-tab="uniqueid"><span id="i-reauthtab-uniqueid">Unique ID</span></button>
+        </div>
+
+        <div id="reauthPasswordPanel">
+          <label id="i-label-reauthpassword">Your password</label>
+          <input type="password" id="reauthPasswordInput" maxlength="8" placeholder="8-character password">
+          <button class="confirm-btn" id="reauthPasswordBtn" style="margin-top:10px;"><span id="i-reauthpassword-btn">Verify</span></button>
+        </div>
+
+        <div id="reauthScanPanel" class="hidden">
+          <div class="scan-stage">
+            <div class="polaroid" style="transform:none;">
+              <div class="viewfinder">
+                <video id="reauthVideo" autoplay playsinline></video>
+                <canvas id="reauthCanvas"></canvas>
+              </div>
+            </div>
+          </div>
+          <button class="confirm-btn" id="reauthScanBtn" style="margin-top:10px;"><span id="i-reauthscan-btn">Scan my face</span></button>
+        </div>
+
+        <div id="reauthUniqueIdPanel" class="hidden">
+          <label id="i-label-reauthuniqueid">Your Unique ID</label>
+          <input type="text" id="reauthUniqueIdInput" placeholder="e.g. K7M2X9QANP" style="text-transform:uppercase;">
+          <button class="confirm-btn" id="reauthUniqueIdBtn" style="margin-top:10px;"><span id="i-reauthuniqueid-btn">Verify</span></button>
+        </div>
+
+        <p class="error-text hidden" id="reauthError"></p>
+      </div>
+
+      <!-- Step 3: the actual edit form, revealed once re-auth succeeds -->
+      <div id="bankEditView" class="ledger-page hidden" style="margin-top:16px;">
+        <p class="form-title" style="font-size:17px;" id="i-editbank-title">Edit Payment Details</p>
+        <div class="important-box">
+          <span class="ib-title" id="i-editbank-warn-title">⚠ Where customers repay you</span>
+          <span id="i-editbank-warn-body">Double-check this carefully before saving.</span>
+        </div>
+
+        <label id="i-label-editupi">UPI ID *</label>
+        <input type="text" id="editUpi">
+
+        <p class="error-text hidden" id="bankEditError"></p>
+        <button class="save-btn" id="saveBankEditBtn"><span id="i-savebankedit-btn">Save changes</span></button>
+        <button class="rescan-link" id="cancelBankEditBtn" style="margin-top:8px;"><span id="i-cancelbankedit-btn">Cancel</span></button>
+      </div>
+    </div>
+    </div>
+    <!-- /dash-main -->
+  </div>
+
+  <div id="customerView" class="hidden">
+    <div class="ledger-page">
+      <div class="customer-head">
+        <img class="customer-photo" id="cPhoto" src="" alt="">
+        <div>
+          <p class="customer-name" id="cName"></p>
+          <div class="customer-mobile" id="cMobile"></div>
+          <div class="customer-address" id="cAddress"></div>
+          <span class="status-badge" id="cStatus"></span>
+        </div>
+      </div>
+
+      <div class="due-block">
+        <div class="due-label" id="i-amountdue-label">Amount due</div>
+        <div class="due-amount" id="cDue">₹0</div>
+      </div>
+
+      <div class="pending-items hidden" id="pendingItemsBlock">
+        <div class="pending-items-label" id="i-creditfor-label">Credit taken for</div>
+        <div class="item-tags" id="pendingItemsTags"></div>
+      </div>
+
+      <div class="action-row">
+        <button class="action-btn btn-purchase" id="showPurchaseForm"><span id="i-addcredit-btn">+ Add credit</span></button>
+        <button class="action-btn btn-payment" id="showPaymentForm"><span id="i-recordpayment-btn">Record payment</span></button>
+      </div>
+
+      <div class="inline-form" id="purchaseForm">
+        <label id="i-label-pickproducts">Select products</label>
+        <div class="product-picker-box">
+          <input type="text" id="purchasePickerSearch" class="product-picker-search" placeholder="Search your products...">
+          <div class="product-picker-results" id="purchasePickerResults"></div>
+        </div>
+
+        <button type="button" class="custom-item-toggle" id="showCustomItemBtn"><span id="i-customitem-toggle">+ Add an item not in your catalog</span></button>
+        <div class="custom-item-row" id="customItemRow">
+          <input type="text" id="customItemName" placeholder="Item name">
+          <input type="number" id="customItemPrice" min="0.01" step="0.01" placeholder="Price">
+          <button type="button" id="addCustomItemBtn"><span id="i-customitem-add">Add</span></button>
+        </div>
+
+        <div class="product-cart" id="purchaseCart"></div>
+        <div class="product-total-row">
+          <span id="i-total-label">Total</span>
+          <span id="purchaseCartTotal">₹0</span>
+        </div>
+
+        <p class="error-text hidden" id="purchaseError"></p>
+        <button class="confirm-btn" id="confirmPurchase"><span id="i-addtodue-btn">Add to due amount</span></button>
+      </div>
+
+      <div class="inline-form" id="paymentForm">
+        <label id="i-label-amountreceived">Amount received</label>
+        <input type="number" id="paymentAmount" min="0" step="0.01" placeholder="0.00">
+        <button class="confirm-btn" id="confirmPayment"><span id="i-recordpayment-btn2">Record payment</span></button>
+      </div>
+
+      <div class="history" id="historyBlock">
+        <div class="history-title" id="i-recentactivity">Recent activity</div>
+        <div id="historyList"></div>
+      </div>
+    </div>
+  </div>
+
+  <div id="clearedView" class="hidden">
+    <div class="stamp-wrap"><div class="stamp" id="i-paidinfull">PAID IN FULL</div></div>
+    <div class="ledger-page" style="text-align:center; padding-top: 26px; padding-bottom: 26px;">
+      <p id="clearedMessage" style="font-family:'Bitter',serif; font-size:16px; margin:0;"></p>
+      <p style="font-size:12px; color:var(--ink-dim); margin-top:8px;" id="i-clearedsub">Their record stays in the khata, off the dues list, with full history preserved.</p>
+    </div>
+  </div>
+
+  <div id="newCustomerView" class="hidden">
+    <div class="ledger-page">
+      <div class="new-customer-tag">
+        <img id="newPhoto" src="" alt="">
+        <span id="i-newface">New face — not in the khata yet</span>
+      </div>
+      <p class="form-title" id="i-addcustomer-title">Add customer</p>
+      <form id="newCustomerForm">
+        <label id="i-label-custname">Name *</label>
+        <input type="text" name="name" required>
+
+        <label id="i-label-custmobile">Mobile number</label>
+        <input type="tel" name="mobile" id="mobileInput" placeholder="10-digit number" inputmode="numeric" maxlength="10">
+        <div class="hint-text" id="mobileHint"></div>
+
+        <label id="i-label-custaddress">Address</label>
+        <input type="text" name="address" placeholder="e.g. 12 MG Road, near bus stand">
+
+        <label id="i-label-startingdue">Starting credit (if any) — select products</label>
+        <div class="product-picker-box">
+          <input type="text" id="newCustomerPickerSearch" class="product-picker-search" placeholder="Search your products...">
+          <div class="product-picker-results" id="newCustomerPickerResults"></div>
+        </div>
+        <div class="product-cart" id="newCustomerCart"></div>
+        <div class="product-total-row">
+          <span id="i-total-label2">Total</span>
+          <span id="newCustomerCartTotal">₹0</span>
+        </div>
+
+        <p class="error-text hidden" id="formError"></p>
+        <button type="submit" class="save-btn"><span id="i-addtokhata-btn">Add to khata</span></button>
+      </form>
+    </div>
+  </div>
+
+  <div class="trust-footer">
+    <div class="trust-item">
+      <svg viewBox="0 0 24 24" fill="none"><path d="M4 8V6a2 2 0 0 1 2-2h2M20 8V6a2 2 0 0 0-2-2h-2M4 16v2a2 2 0 0 0 2 2h2M20 16v2a2 2 0 0 1-2 2h-2" stroke="#6B5F49" stroke-width="1.6" stroke-linecap="round"/><circle cx="12" cy="12" r="3" stroke="#6B5F49" stroke-width="1.6"/></svg>
+      <span id="i-trust1">Instant face recognition</span>
+    </div>
+    <div class="trust-item">
+      <svg viewBox="0 0 24 24" fill="none"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6l7-3z" stroke="#6B5F49" stroke-width="1.6" stroke-linejoin="round"/></svg>
+      <span id="i-trust2">Secure ledger</span>
+    </div>
+    <div class="trust-item">
+      <svg viewBox="0 0 24 24" fill="none"><path d="M6 3h12v17l-3-2-3 2-3-2-3 2V3z" stroke="#6B5F49" stroke-width="1.6" stroke-linejoin="round"/><path d="M8.5 8h7M8.5 11.5h7" stroke="#6B5F49" stroke-width="1.6" stroke-linecap="round"/></svg>
+      <span id="i-trust3">Full transaction history</span>
+    </div>
+  </div>
+  </div>
+  <!-- /appContent -->
+</div>
+<!-- /authApp -->
+
+<div class="help-fab" id="helpFab" title="Help with login and registration">?</div>
+<div class="help-fab" id="contactFab" style="left: 20px; right: auto; background: #25D366;" title="Contact us on WhatsApp">
+  <svg viewBox="0 0 24 24" width="22" height="22" fill="#fff"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.47 17.5 2 12.04 2m5.85 14.05c-.25.7-1.23 1.28-2.02 1.45-.54.11-1.24.2-3.6-.77-3.02-1.25-4.96-4.32-5.11-4.52-.15-.2-1.22-1.62-1.22-3.09s.75-2.19 1.02-2.49c.25-.28.55-.35.73-.35s.37.01.53.01c.17.01.4-.06.62.48.25.6.85 2.08.92 2.23.07.15.12.32.02.52-.1.2-.15.32-.3.5-.15.17-.31.38-.44.51-.15.15-.3.31-.13.6.17.3.76 1.25 1.63 2.03 1.12 1 2.06 1.31 2.36 1.46.3.15.47.12.65-.08.17-.2.72-.85.92-1.14.2-.29.4-.24.65-.14s1.72.82 2.02.97c.3.15.5.22.57.35.07.12.07.72-.18 1.42"/></svg>
+</div>
+
+<div class="help-overlay hidden" id="helpOverlay">
+  <div class="help-panel">
+    <button class="help-close" id="helpClose">×</button>
+    <h2 id="i-help-title">Help — Login &amp; Registration</h2>
+    <p id="i-help-intro">Guidance for shop owners setting up or accessing their khata account.</p>
+
+    <button class="scan-btn" id="helpListenBtn" style="margin: 4px 0 14px; padding: 12px;">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" style="vertical-align:-3px; margin-right:6px;"><path d="M11 5 6 9H3v6h3l5 4V5z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M15.5 8.5a5 5 0 0 1 0 7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+      <span id="i-help-listen-btn">Listen to this section</span>
+    </button>
+
+    <div id="helpBody"><!-- filled by JS: applyHelpContent() --></div>
+  </div>
+</div>
+
+<div class="help-overlay hidden" id="contactOverlay">
+  <div class="help-panel">
+    <button class="help-close" id="contactClose">×</button>
+    <h2 id="i-contact-title">Contact Us</h2>
+    <p id="i-contact-intro">Tell us what's wrong — we'll get back to you soon.</p>
+
+    <form id="contactForm">
+      <label id="i-label-contactname">Your name *</label>
+      <input type="text" id="contactName" required>
+
+      <label id="i-label-contactphone">Phone number *</label>
+      <input type="tel" id="contactPhone" maxlength="10" inputmode="numeric" placeholder="10-digit number" required>
+
+      <label id="i-label-contactrole">You are a *</label>
+      <div class="fallback-tabs">
+        <button type="button" class="fallback-tab active" data-contact-role="shop_owner"><span id="i-contactrole-shop">Shop Owner</span></button>
+        <button type="button" class="fallback-tab" data-contact-role="customer"><span id="i-contactrole-customer">Customer</span></button>
+      </div>
+
+      <label id="i-label-contactcategory">What's this about? *</label>
+      <select id="contactCategory" style="width:100%; padding:11px 12px; font-size:16px; border:1px solid var(--rule); border-radius:3px; background:#fff; color:var(--ink);"></select>
+
+      <label id="i-label-contactdesc">Describe the problem *</label>
+      <textarea id="contactDescription" rows="4" style="width:100%; padding:11px 12px; font-size:16px; border:1px solid var(--rule); border-radius:3px; font-family:inherit; resize:vertical;"></textarea>
+
+      <p class="error-text hidden" id="contactError"></p>
+      <p class="status-line hidden" id="contactSuccess" style="color:var(--paid-green); font-weight:700;"></p>
+      <button type="submit" class="save-btn" id="contactSubmitBtn" style="background: #6B8E23;"><span id="i-contact-submit-btn">Send message</span></button>
+    </form>
+  </div>
+</div>
+
+<script src="/static/js/i18n.js"></script>
+
+<script src="/static/js/auth.js"></script>
+<script src="/static/js/customer-portal.js"></script>
+<script src="/static/js/contact.js"></script>
+
+<script src="/static/js/voice.js"></script>
+<script src="/static/js/app.js"></script>
+</body>
+</html>

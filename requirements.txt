@@ -1,0 +1,9 @@
+flask
+flask-cors
+python-dotenv
+pillow
+supabase
+gunicorn
+numpy
+requests
+tqdm
