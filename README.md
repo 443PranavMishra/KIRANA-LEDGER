@@ -9,8 +9,7 @@ economy, without asking anyone to read, type, or remember a password.**
 
 MODEL LINK : https://www.kaggle.com/models/pranavmishra443/facenet-model
 
-RUN ON YOUR SYSTEM Pdf : [https://www.kaggle.com/models/pranavmishra443/facenet-model](https://drive.google.com/file/d/1cPs9nbZJq8SuKytojBrMT4OKoNQ9EUQK/view?usp=drive_link)
-
+RUN ON YOUR SYSTEM Pdf : https://drive.google.com/file/d/1cPs9nbZJq8SuKytojBrMT4OKoNQ9EUQK/view?usp=drive_link
 ---
 
 ## The Problem
