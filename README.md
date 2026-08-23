@@ -169,6 +169,9 @@ khata_project/
 
 **Step 12:** Now the website is ready to use as a shop owner and customer.
 
+NOTE : IF YOU GET CONFUSE KINDLY SEE FOLDER STRUCTURE PROPERLY
+-> AND WHILE RUUNING THE CODE IF SOME DEPENDENCIES GIVE ERROR : KINDLY DOWNLOAD THAT
+
 ---
 
 ## Some Flaws Of Current Project — IMPORTANT!
