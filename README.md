@@ -1,4 +1,4 @@
-# 📒 Khata — AI Based Digital Ledger for India's Kirana Shops
+# 📒 Kirana Ledger — AI Based Digital Ledger for India's Kirana Shops
 
 **A face-recognition credit ledger that brings India's neighborhood
 kirana shops — and the customers who depend on them — into the digital
