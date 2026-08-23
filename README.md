@@ -147,7 +147,7 @@ khata_project/
 
 **Step 1:** Download all files and set up in the project structure inside any main folder (Khata Ledger).
 
-**Step 2:** Download the model from the given model link: https://www.kaggle.com/models/pranavmishra443/facenet-model
+**Step 2:** Create a Models Folder In Main Folder and paste the downloaded from model in that Models Folder Download the model from the given model link: https://www.kaggle.com/models/pranavmishra443/facenet-model
 
 **Step 3:** Now open the main folder with VS Code.
 
