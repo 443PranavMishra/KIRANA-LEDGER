@@ -7,9 +7,9 @@ economy, without asking anyone to read, type, or remember a password.**
 > Built for: **Inclusive AI, Social Impact & Empowerment of Underserved
 > Communities — AI for Public Good**
 
-MODEL LINK : https://www.kaggle.com/models/pranavmishra443/facenet-model
+##MODEL LINK : https://www.kaggle.com/models/pranavmishra443/facenet-model
 
-RUN ON YOUR SYSTEM Pdf : https://drive.google.com/file/d/1cPs9nbZJq8SuKytojBrMT4OKoNQ9EUQK/view?usp=drive_link
+##RUN ON YOUR SYSTEM Pdf : https://drive.google.com/file/d/1cPs9nbZJq8SuKytojBrMT4OKoNQ9EUQK/view?usp=drive_link
 ---
 
 ## The Problem
